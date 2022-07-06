@@ -13,9 +13,24 @@ const int N = 1e9;
 
 int main()
 {
-    int n;
-    cout << "Enter : ";
-    cin >> n;
+    int n = 5, W = 11;
+
+    vi wt = {3, 2, 4, 5, 1};
+    vi val = {4, 3, 5, 6, 1};
+    vi dp(W + 1, 0);
+
+    rep1(j, 0, W)
+    {
+        rep(i, 0, n)
+        {
+            if (j - wt[i] >= 0)
+            {
+                dp[j] = max(dp[j], val[i] + dp[j - wt[i]]);
+            }
+        }
+    }
+
+    cout << dp[W] << endl;
 
     return 0;
 }

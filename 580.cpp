@@ -14,8 +14,32 @@ const int N = 1e9;
 int main()
 {
     int n;
-    cout << "Enter : ";
+    cout << "Enter total elements in array : ";
     cin >> n;
+
+    vi a(n);
+
+    rep(i, 0, n)
+    {
+        cout << "Enter element : ";
+        cin >> a[i];
+    }
+
+    int curr = 0, maxTillNow = 0;
+
+    rep(i, 0, n)
+    {
+        curr += a[i];
+
+        maxTillNow = max(curr, maxTillNow);
+
+        if (curr < 0)
+        {
+            curr = 0;
+        }
+    }
+
+    cout << maxTillNow << endl;
 
     return 0;
 }
